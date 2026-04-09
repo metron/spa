@@ -7,3 +7,7 @@ npm -v
 
 # Содать проект React
 npm create vite@latest my-react-app -- --template react
+# Запустить проект
+cd react-app
+npm install
+npm run dev

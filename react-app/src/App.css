@@ -1,184 +1,194 @@
-.counter {
-  font-size: 16px;
-  padding: 5px 10px;
-  border-radius: 5px;
-  color: var(--accent);
-  background: var(--accent-bg);
-  border: 2px solid transparent;
-  transition: border-color 0.3s;
-  margin-bottom: 24px;
-
-  &:hover {
-    border-color: var(--accent-border);
-  }
-  &:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
-  }
+:root {
+    font-family: sans-serif;
+    background-color: #f4f7f6;
 }
 
-.hero {
-  position: relative;
-
-  .base,
-  .framework,
-  .vite {
-    inset-inline: 0;
-    margin: 0 auto;
-  }
-
-  .base {
-    width: 170px;
-    position: relative;
-    z-index: 0;
-  }
-
-  .framework,
-  .vite {
-    position: absolute;
-  }
-
-  .framework {
-    z-index: 1;
-    top: 34px;
-    height: 28px;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(44deg) rotateY(39deg)
-      scale(1.4);
-  }
-
-  .vite {
-    z-index: 0;
-    top: 107px;
-    height: 26px;
-    width: auto;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(40deg) rotateY(39deg)
-      scale(0.8);
-  }
+:root {
+    --bg-main: #f4f7f6;
+    --bg-card: #ffffff;
+    --text-color: #333333;
+    --accent-color: #646cff;
 }
 
-#center {
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
-  place-content: center;
-  place-items: center;
-  flex-grow: 1;
-
-  @media (max-width: 1024px) {
-    padding: 32px 20px 24px;
-    gap: 18px;
-  }
+/* Темная тема */
+:root.dark {
+    --bg-main: #1a1a1a;
+    --bg-card: #2d2d2d;
+    --text-color: #f0f0f0;
+    --accent-color: #818cf8;
 }
 
-#next-steps {
-  display: flex;
-  border-top: 1px solid var(--border);
-  text-align: left;
-
-  & > div {
-    flex: 1 1 0;
-    padding: 32px;
-    @media (max-width: 1024px) {
-      padding: 24px 20px;
-    }
-  }
-
-  .icon {
-    margin-bottom: 16px;
-    width: 22px;
-    height: 22px;
-  }
-
-  @media (max-width: 1024px) {
-    flex-direction: column;
-    text-align: center;
-  }
+/* Используйте эти переменные в стилях элементов */
+body {
+    background-color: var(--bg-main);
+    color: var(--text-color);
+    transition: all 0.3s ease; /* Плавный переход цветов */
 }
 
-#docs {
-  border-right: 1px solid var(--border);
-
-  @media (max-width: 1024px) {
-    border-right: none;
-    border-bottom: 1px solid var(--border);
-  }
-}
-
-#next-steps ul {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  gap: 8px;
-  margin: 32px 0 0;
-
-  .logo {
-    height: 18px;
-  }
-
-  a {
-    color: var(--text-h);
-    font-size: 16px;
-    border-radius: 6px;
-    background: var(--social-bg);
+.container {
     display: flex;
-    padding: 6px 12px;
-    align-items: center;
-    gap: 8px;
-    text-decoration: none;
-    transition: box-shadow 0.3s;
+    gap: 30px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto 0 0;
+}
 
-    &:hover {
-      box-shadow: var(--shadow);
-    }
-    .button-icon {
-      height: 18px;
-      width: 18px;
-    }
-  }
+/* Форма */
+.sidebar {
+    flex: 0 0 300px;
+    background-color: var(--bg-card);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    height: fit-content;
+}
 
-  @media (max-width: 1024px) {
-    margin-top: 20px;
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+input, textarea {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+button {
+    background: #646cff;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background: #535bf2;
+}
+
+/* Карточки */
+.content {
+    flex: 1;
+}
+
+.grid {
+    display: flex;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
     flex-wrap: wrap;
-    justify-content: center;
-
-    li {
-      flex: 1 1 calc(50% - 8px);
-    }
-
-    a {
-      width: 100%;
-      justify-content: center;
-      box-sizing: border-box;
-    }
-  }
 }
 
-#spacer {
-  height: 88px;
-  border-top: 1px solid var(--border);
-  @media (max-width: 1024px) {
-    height: 48px;
-  }
+.card {
+    background-color: var(--bg-card);
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 5px solid #646cff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
-.ticks {
-  position: relative;
-  width: 100%;
+.badge {
+    display: inline-block;
+    background: #e2e8f0;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    margin-bottom: 10px;
+    color: #333333;
+}
 
-  &::before,
-  &::after {
-    content: '';
-    position: absolute;
-    top: -4.5px;
-    border: 5px solid transparent;
-  }
+.filter-box {
+    margin-bottom: 20px;
+}
 
-  &::before {
-    left: 0;
-    border-left-color: var(--border);
-  }
-  &::after {
-    right: 0;
-    border-right-color: var(--border);
-  }
+.filter-box input {
+    width: 100%;
+    max-width: 400px;
+    padding: 12px;
+    border: 2px solid #646cff; /* Выделим цветом бренда */
+    outline: none;
+}
+
+.content-header {
+    display: flex; /* Включаем Flexbox */
+    align-items: center; /* Выравниваем текст и кнопку по вертикальному центру */
+    justify-content: center; /* Заголовок слева, кнопка справа */
+    margin-bottom: 20px; /* Отступ снизу от заголовка */
+}
+
+h2 {
+    color: var(--text-color);
+}
+
+.content-header h2 {
+    margin: 0; /* Убираем стандартные отступы заголовка, чтобы не ломать центровку */
+}
+
+.content-header button {
+    margin-left: 20px; /* Убираем стандартные отступы заголовка, чтобы не ломать центровку */
+}
+
+.theme-toggle {
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid var(--accent-color);
+    background: transparent;
+    color: var(--text-color);
+    font-size: 14px;
+}
+
+.header-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.clear-btn {
+    background: #ff4d4f;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.delete-btn {
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0 5px;
+    opacity: 0.6;
+}
+
+.delete-btn:hover {
+    opacity: 1;
+    color: #d9363e;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        flex: none;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .filter-box input {
+        box-sizing: border-box;
+    }
 }
