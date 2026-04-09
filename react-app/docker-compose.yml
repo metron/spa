@@ -1,0 +1,21 @@
+services:
+  # Сервис для РАЗРАБОТКИ (с горячей перезагрузкой)
+  frontend-dev:
+    image: node:20-slim
+    container_name: react-dev-container
+    working_dir: /app
+    ports:
+      - "5173:5173" # Стандартный порт Vite
+    volumes:
+      - .:/app                 # Прокидываем весь проект внутрь
+      - /app/node_modules      # "Магия": не даем локальным модулям перетереть контейнерные
+    command: npm run dev -- --host # Запускаем сервер разработки Vite
+    environment:
+      - NODE_ENV=development
+
+  # Сервис для ПРОДАКШЕНА (тот самый легкий на Nginx)
+  frontend-prod:
+    build: .
+    container_name: react-prod-container
+    ports:
+      - "8080:80"
